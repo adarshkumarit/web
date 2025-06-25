@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adarsh's Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg-dark: #121212;
+      --bg-light: #ffffff;
+      --text-dark: #000000;
+      --text-light: #ffffff;
+      --muted-text-dark: #aaaaaa;
+      --muted-text-light: #444444;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+
+    canvas#star-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.light-theme {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    h2,
+    .section p {
+      color: var(--muted-text-dark);
+    }
+
+    body.light-theme h2,
+    body.light-theme .section p {
+      color: var(--muted-text-light);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin: 0;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+  h2,
+.section p {
+  color: white;
+}
+
+body.light-theme h2,
+body.light-theme .section p {
+  color: black;
+}
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section h3 {
+      margin-bottom: 10px;
+    }
+
+    .work-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #444;
+    }
+
+    .skills-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .skills-boxes .skill {
+      padding: 10px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #4c68d7, #8e54e9);
+      color: white;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .skills-boxes .skill:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+    }
+
+    body.light-theme .skills-boxes .skill {
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      color: #000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .bottom-btn-group {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .bottom-btn-box {
+      display: flex;
+      gap: 12px;
+      padding: 12px 18px;
+      border-radius: 32px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .circle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: #333;
+      color: white;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .circle-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .light-theme .circle-btn {
+      background-color: black;
+      color: white;
+    }
+    .section:last-of-type {
+  margin-bottom: 200px;
+}
+
+.tiny-box {
+  width: 50px;
+  height: 20px;
+  background-color: #444;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  opacity: 0.6;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Star Canvas -->
+  <canvas id="star-canvas"></canvas>
+
+  <div class="container">
+    <h1>Hi, <br>Adarsh here</h1>
+    <h2>"Sometimes you don't know the recipe your destiny will"</h2>
+
+    <div class="section">
+      <h3>About</h3>
+      <p>Just a little kid hails from Bundelkhand, Uttar Pradesh<br> who is passionate to learn coding and DevOps and <br>wants to enter the IT sector.</p>
+      <p>"Sometimes I also write rap and produce music."</p>
+    </div>
+
+    <div class="section">
+      <h3>Education</h3>
+      <p>Senior secondary</p>
+      <p>B.Tech IT (KIET Group of Institutions)</p>
+    </div>
+
+    <div class="section">
+      <h3>Skills</h3>
+      <div class="skills-boxes">
+        <div class="skill">C</div>
+        <div class="skill">Python</div>
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Java</div>
+        <div class="skill">Data Structures</div>
+        <div class="skill">Blockchain</div>
+        <div class="skill">DevOps</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-btn-group">
+    <div class="bottom-btn-box">
+      <button class="circle-btn" title="Home">
+        <i class="fas fa-home"></i>
+      </button>
+      <button class="circle-btn" title="Email" onclick="window.location.href='mailto:anshulsinghdhh@gmail.com'">
+        <i class="fas fa-envelope"></i>
+      </button>
+      
+      <button class="circle-btn" title="Social Links" onclick="window.location.href='skills.html'">
+        <i class="fas fa-share-alt"></i>
+      </button>
+      <button class="circle-btn" title="GitHub" onclick="window.open('https://github.com/adarshkumarit', '_blank')">
+        <i class="fab fa-github"></i>
+      </button>
+      <button class="circle-btn" title="LinkedIn" onclick="window.open('https://www.linkedin.com/in/adarsh-kumar-9abaab327/', '_blank')">
+        <i class="fab fa-linkedin"></i>
+      </button>
+      <button class="circle-btn" onclick="toggleTheme()" title="Toggle Theme">
+        <i id="theme-icon" class="fas fa-moon"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Theme Toggle
+    function toggleTheme() {
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      body.classList.toggle("light-theme");
+      if (body.classList.contains("light-theme")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+      }
+    }
+
+    // Twinkling Stars Canvas
+    const canvas = document.getElementById("star-canvas");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    class Star {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 1.5 + 0.5;
+        this.alpha = Math.random();
+        this.delta = Math.random() * 0.03 + 0.005;
+      }
+      update() {
+        this.alpha += this.delta;
+        if (this.alpha <= 0 || this.alpha >= 1) this.delta = -this.delta;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      stars = [];
+      for (let i = 0; i < 300; i++) stars.push(new Star());
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let star of stars) {
+        star.update();
+        star.draw();
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+  <div class="tiny-box"></div>
+
+</body>
+</html>

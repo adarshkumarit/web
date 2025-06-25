@@ -1,0 +1,169 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Social Links</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background: #181818;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light-theme {
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+    }
+
+    .social-btns {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background: #232323;
+      color: #fff;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .circle-btn:hover {
+      transform: scale(1.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    .yt { background: #ff0000; }
+    .yt:hover { background: #cc0000; }
+
+    .ig { background: linear-gradient(135deg, #fd5949 0%, #d6249f 50%, #285AEB 100%); }
+    .ig:hover { filter: brightness(0.9); }
+
+    .tw { background: #1da1f2; color: #fff; }
+    .tw:hover { background: #0d8ddb; }
+
+    .lc { background: #FFA116; color: #222; }
+    .lc:hover { background: #d48c0f; }
+
+    .bottom-btn-group {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .bottom-btn-box {
+      display: flex;
+      gap: 12px;
+      padding: 12px 18px;
+      border-radius: 32px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .bottom-btn-box .circle-btn {
+      width: 44px;
+      height: 44px;
+      font-size: 18px;
+      background: #333;
+      color: white;
+    }
+
+    .bottom-btn-box .circle-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .light-theme .bottom-btn-box .circle-btn {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Connect with Me</h1>
+  <div class="social-btns">
+    <a class="circle-btn yt" href="https://www.youtube.com/" target="_blank" title="YouTube" onclick="window.open('https://www.youtube.com/@povishu', '_blank')">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a class="circle-btn ig" href="https://www.instagram.com/" target="_blank" title="Instagram" onclick="window.open('https://www.instagram.com/ishux2006/', '_blank')">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a class="circle-btn tw" href="https://twitter.com/" target="_blank" title="Twitter" onclick="window.open('https://x.com/Theycallmeishu', '_blank')">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a class="circle-btn lc" href="https://leetcode.com/" target="_blank" title="LeetCode" onclick="window.open('https://leetcode.com/u/ishucodes/', '_blank')">
+      <svg width="28" height="28" viewBox="0 0 50 50" style="vertical-align:middle;" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M33.9 13.1L18.1 28.9C16.7 30.3 16.7 32.6 18.1 34C19.5 35.4 21.8 35.4 23.2 34L39 18.2" stroke="#222" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25" cy="25" r="22" stroke="#222" stroke-width="4"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="bottom-btn-group">
+    <div class="bottom-btn-box">
+      <button class="circle-btn" title="Home" onclick="window.location.href='index.html.html'">
+        <i class="fas fa-home"></i>
+      </button>
+      <button class="circle-btn" title="Email" onclick="window.location.href='mailto:anshulsinghdhh@gmail.com'">
+        <i class="fas fa-envelope"></i>
+      </button>
+      <button class="circle-btn" title="Social Links" onclick="window.location.href='skills.html'">
+        <i class="fas fa-share-alt"></i>
+      </button>
+      <button class="circle-btn" title="GitHub" onclick="window.open('https://github.com/adarshkumarit', '_blank')">
+        <i class="fab fa-github"></i>
+      </button>
+      <button class="circle-btn" title="LinkedIn" onclick="window.open('https://www.linkedin.com/in/adarsh-kumar-9abaab327/', '_blank')">
+        <i class="fab fa-linkedin"></i>
+      </button>
+      <button class="circle-btn" onclick="toggleTheme()" title="Toggle Theme">
+        <i id="theme-icon" class="fas fa-moon"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      body.classList.toggle("light-theme");
+
+      if (body.classList.contains("light-theme")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+      }
+    }
+  </script>
+</body>
+</html>
