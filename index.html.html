@@ -5,117 +5,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Adarsh's Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg-dark: #121212;
+      --bg-dark: #0d0d0d;
       --bg-light: #ffffff;
-      --text-dark: #000000;
-      --text-light: #ffffff;
-      --muted-text-dark: #aaaaaa;
-      --muted-text-light: #444444;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-x: hidden;
-      font-family: 'Inter', sans-serif;
-    }
-
-    canvas#star-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
+      --text-dark: #111111;
+      --text-light: #f5f5f5;
+      --muted-dark: #b3b3b3;
+      --muted-light: #555555;
+      --accent: #6c63ff;
     }
 
     body {
-      background-color: var(--bg-dark);
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
       color: var(--text-light);
-      transition: background-color 0.3s, color 0.3s;
+      transition: 0.4s ease;
+      overflow-x: hidden;
+    }
+    body.light-theme { background: var(--bg-light); color: var(--text-dark); }
+
+    canvas#star-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
     }
 
-    body.light-theme {
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-    }
-
-    h2, .section p {
-      color: var(--muted-text-dark);
-    }
-
-    body.light-theme h2, body.light-theme .section p {
-      color: var(--muted-text-light);
-    }
-
+    /* Container */
     .container {
-      max-width: 900px;
+      max-width: 950px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 60px 20px;
       position: relative;
       z-index: 1;
     }
 
+    /* Headings */
     h1 {
-      font-size: 2.4rem;
+      font-family: 'Merriweather', serif;
+      font-size: 3rem;
       margin: 0;
-      line-height: 1.2;
-      word-break: break-word;
+      line-height: 1.3;
     }
 
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.8rem;
-      }
+    h2 {
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: var(--muted-dark);
+      margin-top: 12px;
     }
+    body.light-theme h2 { color: var(--muted-light); }
 
+    /* Sections */
     .section {
-      margin-top: 40px;
+      margin-top: 60px;
     }
-
     .section h3 {
-      margin-bottom: 10px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      border-left: 5px solid var(--accent);
+      padding-left: 12px;
     }
 
-    .work-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid #444;
+    /* Card blocks */
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px 25px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-4px); }
+
+    .section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin-bottom: 15px;
     }
 
+    /* Skills Grid */
     .skills-boxes {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 12px;
     }
+    .skills-boxes a {
+  text-decoration: none;   /* removes underline */
+  display: inline-block;   /* makes it behave like a button */
+}
 
-    .skills-boxes .skill {
+    .skill {
       padding: 10px 18px;
       border-radius: 14px;
-      background: linear-gradient(135deg, #4c68d7, #8e54e9);
+      background: linear-gradient(135deg, #6c63ff, #ab47bc);
       color: white;
       font-weight: 500;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       font-size: 0.95rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
+    .skill:hover { transform: translateY(-5px); }
 
-    .skills-boxes .skill:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-      cursor: pointer;
-    }
-
-    body.light-theme .skills-boxes .skill {
+    body.light-theme .skill {
       background: linear-gradient(135deg, #89f7fe, #66a6ff);
       color: #000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
+    /* Bottom Button Group */
     .bottom-btn-group {
       position: fixed;
       bottom: 20px;
@@ -123,17 +125,15 @@
       transform: translateX(-50%);
       z-index: 2;
     }
-
     .bottom-btn-box {
       display: flex;
       gap: 12px;
       padding: 12px 18px;
       border-radius: 32px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
-
     .circle-btn {
       width: 44px;
       height: 44px;
@@ -148,35 +148,13 @@
       transition: transform 0.3s;
       cursor: pointer;
     }
+    .circle-btn:hover { transform: scale(1.2); }
+    .light-theme .circle-btn { background: black; color: white; }
 
-    .circle-btn:hover {
-      transform: scale(1.2);
-    }
-
-    .light-theme .circle-btn {
-      background-color: black;
-      color: white;
-    }
-
-    .section:last-of-type {
-      margin-bottom: 200px;
-    }
-
-    .tiny-box {
-      width: 50px;
-      height: 20px;
-      background-color: #444;
-      margin: 0 auto 20px;
-      border-radius: 4px;
-      opacity: 0.6;
-    }
-
-    /* Splash screen styles */
+    /* Splash screen */
     #splash {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background: #121212;
       color: white;
       display: flex;
@@ -185,15 +163,11 @@
       font-size: 2rem;
       font-weight: bold;
       z-index: 9999;
-      
     }
-
-   
-    #main-content {
-      display: none;
-    }
+    #main-content { display: none; }
   </style>
 </head>
+
 <body>
   <!-- Splash Animation -->
   <div id="splash">Loading...</div>
@@ -204,37 +178,50 @@
   <!-- Main Content -->
   <div id="main-content">
     <div class="container">
-      <h1>Hi, <br>Adarsh here</h1>
+      <h1>Hi, <br>Adarsh here 👋</h1>
       <h2>"Sometimes you don't know the recipe your destiny will"</h2>
 
+      <!-- About Section -->
       <div class="section">
-        <h3>About</h3>
-        <p>Just a little kid hails from Bundelkhand, Uttar Pradesh<br> who is passionate to learn coding and DevOps and <br>wants to enter the IT sector.</p>
-        <p>"Sometimes I also write rap and produce music."</p>
-      </div>
-
-      <div class="section">
-        <h3>Education</h3>
-        <p>Senior secondary</p>
-        <p>B.Tech IT (KIET Group of Institutions)</p>
-      </div>
-
-      <div class="section">
-        <h3>Skills</h3>
-        <div class="skills-boxes">
-          <div class="skill">C</div>
-          <div class="skill">Python</div>
-          <div class="skill">HTML</div>
-          <div class="skill">CSS</div>
-          <div class="skill">JavaScript</div>
-          <div class="skill">Java</div>
-          <div class="skill">Data Structures</div>
-          <div class="skill">Blockchain</div>
-          <div class="skill">DevOps</div>
+        <h3>About Me</h3>
+        <div class="card">
+          <p>I’m Adarsh, a kid from Bundelkhand, Uttar Pradesh 🌏 who’s passionate about coding, DevOps, and breaking into the IT sector.</p>
+          <p>Sometimes I also explore creativity through rap writing and music production 🎶.</p>
         </div>
       </div>
+
+      <!-- Education Section -->
+      <div class="section">
+        <h3>Education</h3>
+        <div class="card">
+          <p>📘 Senior Secondary</p>
+          <p>🎓 B.Tech IT — KIET Group of Institutions</p>
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <!-- Skills Section -->
+<div class="section">
+  <h3>Skills</h3>
+  <div class="card">
+    <div class="skills-boxes">
+      <a class="skill" href="https://devdocs.io/c/" target="_blank">C</a>
+      <a class="skill" href="https://docs.python.org/3/" target="_blank">Python</a>
+      <a class="skill" href="https://developer.mozilla.org/docs/Web/HTML" target="_blank">HTML</a>
+      <a class="skill" href="https://developer.mozilla.org/docs/Web/CSS" target="_blank">CSS</a>
+      <a class="skill" href="https://developer.mozilla.org/docs/Web/JavaScript" target="_blank">JavaScript</a>
+      <a class="skill" href="https://docs.oracle.com/en/java/" target="_blank">Java</a>
+      <a class="skill" href="https://www.geeksforgeeks.org/data-structures/" target="_blank">Data Structures</a>
+      <a class="skill" href="https://ethereum.org/en/developers/docs/" target="_blank">Blockchain</a>
+      <a class="skill" href="https://docs.docker.com/" target="_blank">DevOps</a>
+      <a class="skill" href="https://dev.mysql.com/doc/" target="_blank">MySQL</a>
+      <a class="skill" href="https://www.mongodb.com/docs/" target="_blank">MongoDB</a>
+      <a class="skill" href="https://www.tutorialspoint.com/dbms/index.htm" target="_blank">DBMS</a>
+      <a class="skill" href="https://docs.aws.amazon.com/" target="_blank">AWS</a>
     </div>
   </div>
+</div>
+
 
   <!-- Bottom Buttons -->
   <div class="bottom-btn-group">
@@ -247,8 +234,6 @@
       <button class="circle-btn" onclick="toggleTheme()" title="Toggle Theme"><i id="theme-icon" class="fas fa-moon"></i></button>
     </div>
   </div>
-
-  <div class="tiny-box"></div>
 
   <script>
     // Theme toggle
@@ -265,30 +250,19 @@
       }
     }
 
-    // Splash animation greetings
-    const greetings = [
-      "नमस्ते!", "வணக்கம்!", "నమస్తే!",
-      "ਨਮਸਤੇ!", "নমস্কার!", "ନମସ୍କାର!",
-      "નમસ્તે!", "ನಮಸ್ಕಾರ!", "നമസ്‌കാരം!", "নমস্কাৰ!",
-      "Hallo!", "Bonjour!", "Hola!","प्रणाम!",
-"こんにちは!",
-"你好!",
-"Здравствуйте!"
-
-    ];
-
+    // Splash greetings
+    const greetings = ["नमस्ते!", "வணக்கம்!", "నమస్తే!", "ਨਮਸਤੇ!", "নমস্কার!", "ନମସ୍କାର!", "નમસ્તે!", "ನಮಸ್ಕಾರ!", "നമസ്‌കാരം!", "নমস্কাৰ!", "Hallo!", "Bonjour!", "Hola!", "こんにちは!", "你好!", "Здравствуйте!"];
     const splash = document.getElementById("splash");
     let i = 0;
-   const interval = setInterval(() => {
-  splash.textContent = greetings[i];
-  i++;
-  if (i >= greetings.length) {
-    clearInterval(interval);
-    splash.style.display = "none";
-    document.getElementById("main-content").style.display = "block";
-  }
-}, 330);
-
+    const interval = setInterval(() => {
+      splash.textContent = greetings[i];
+      i++;
+      if (i >= greetings.length) {
+        clearInterval(interval);
+        splash.style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      }
+    }, 330);
 
     // Star canvas
     const canvas = document.getElementById("star-canvas");
@@ -314,14 +288,12 @@
         ctx.fill();
       }
     }
-
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       stars = [];
       for (let i = 0; i < 300; i++) stars.push(new Star());
     }
-
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
     function animate() {
